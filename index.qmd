@@ -1,0 +1,53 @@
+---
+title: "my first slides"
+subtitle: "Dataviz of gapminder"
+author: "Irene García-Espantaleón"
+format:
+  revealjs:
+    embed-resources: true
+editor: visual
+---
+
+## Loading data
+
+We will load the dataset "gapminder".
+
+```{r}
+library(gapminder)
+gapminder
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+------------------------------------------------------------------------
+
+## Preprocess the data
+
+The three hyphens indicate that the following text is on a different slide. The rest of it works the same as a normal Quarto document.
+
+```{r}
+gapminder_2007 <- gapminder |> filter(year == 2007)
+```
+
+------------------------------------------------------------------------
+
+## Plot the data
+
+```{r}
+#| echo: true
+#| code-fold: true
+
+ggplot(gapminder_2007) + 
+  geom_point(aes(x = lifeExp, y = gdpPercap, color = continent)) +
+  theme_minimal()
+```
+
+Remember to include the libraries in every Quarto document we use, because they are independent from each other and we will need them in order to render.
+
+------------------------------------------------------------------------
+
+## What now?
+
+We want to convert our repo into a website.
